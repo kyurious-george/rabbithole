@@ -255,5 +255,3 @@ while read -r word; do
 done < <(grep file) # this the process substitution and useful for streaming data
 ```
 - `<(command)` takes the stdout of the command and saves it to intermediate folder that then gets consumed by the shell env that calls it
-
-# 
