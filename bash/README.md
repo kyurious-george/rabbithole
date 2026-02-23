@@ -58,7 +58,6 @@
     - `-i`: interactive mode (ask before deleting)
     - `-F`: force delete 
     - `-v`: verbose mode
-- `tr {input} {output}`: translate, replaces all occurrences of input in stdin to output
 - `touch`: changes file timestamps or creates an empty file if it does not exist 
     - `-a`: update only when file was last read
     - `-m`: update only when file was last changed
@@ -255,3 +254,8 @@ while read -r word; do
 done < <(grep file) # this the process substitution and useful for streaming data
 ```
 - `<(command)` takes the stdout of the command and saves it to intermediate folder that then gets consumed by the shell env that calls it
+
+## String Manipulation
+
+- `tr {input} {output}`: translate, replaces all occurrences of input in stdin to output
+- `{input} | cut -d {delimiter} : -f {1,2-4,5-}`: separates each line into an array by the specified delimter and then returns the specified field columns
