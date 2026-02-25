@@ -37,3 +37,24 @@ if __name__ == "__main__":
 
 **Public**: attributes or methods that are open and accessible to the user (can use from the main function)
 - Note: attributes and methods are public by default in Python
+
+## Enums
+
+**Enum**: special data type that defines a fixed set of constants and allows for compilers and type checkers to be catch errors early 
+
+```python 
+from enum import Enum
+
+class Coin(Enum):
+    PENNY = 1
+    NICKEL = 5
+    DIME = 10
+    QUARTER = 25
+    
+    def __init__(self, value): # attributes get init automatically and as a tuple for the {ENUM}.{attribute}
+        self.coin_value = value
+    
+    def get_value(self):
+        return self.coin_value
+```
+
