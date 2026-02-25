@@ -37,6 +37,7 @@ if __name__ == "__main__":
 
 **Public**: attributes or methods that are open and accessible to the user (can use from the main function)
 - Note: attributes and methods are public by default in Python
+- Use `@property` to specify an attribute as public read only (allows `{object}.{attribute}` syntax but you can't modify the attribute data)
 
 ## Enums
 
@@ -58,3 +59,7 @@ class Coin(Enum):
         return self.coin_value
 ```
 
+Some Details about Enums:
+- `{enum}.name` is automatically assigned without having to init
+- `{enum}.attribute1, {enum}.attribute2` are automatically assigned by unpacking the tuple that the enum is set to
+- You can have distinctly named enums that have the same values (values are not unique except when `@enum.unique` is specified, however, names must be unique) 

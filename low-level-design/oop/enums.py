@@ -1,13 +1,16 @@
 from enum import Enum
 
 class LightColor(Enum):
-    GREEN = ("GREEN", 25)
-    RED = ("RED", 30)
-    YELLOW = ("YELLOW", 5)
+    GREEN = 25
+    RED = 30
+    YELLOW = 5
 
-    def __init__(self, name, duration):
-        self._name = name
+    def __init__(self, duration):
         self._duration = duration
+
+    @property
+    def duration(self): 
+        return self._duration
 
 class TrafficLight():
     _light_transitions = {
@@ -23,7 +26,7 @@ class TrafficLight():
         return self._light_transitions.get(self.color)
 
     def display(self):
-        print(f"{self.color._name} ({self.color._duration}s)")
+        print(f"{self.color.name} ({self.color.duration}s)")
     
 if __name__ == "__main__":
     light = TrafficLight()
