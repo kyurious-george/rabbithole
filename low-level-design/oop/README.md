@@ -39,6 +39,7 @@ if __name__ == "__main__":
 - Note: attributes and methods are public by default in Python
 - Use `@property` to specify an attribute as public read only (allows `{object}.{attribute}` syntax but you can't modify the attribute data)
 
+
 ## Enums
 
 **Enum**: special data type that defines a fixed set of constants and allows for compilers and type checkers to be catch errors early 
@@ -63,3 +64,44 @@ Some Details about Enums:
 - `{enum}.name` is automatically assigned without having to init
 - `{enum}.attribute1, {enum}.attribute2` are automatically assigned by unpacking the tuple that the enum is set to
 - You can have distinctly named enums that have the same values (values are not unique except when `@enum.unique` is specified, however, names must be unique) 
+
+
+## Interfaces 
+
+**Interfaces**: list of methods that the implementing classes must provide, however, the implementation is not written (actual implementation routes to the individual classes)
+
+Properties of Interfaces:
+- Defines behavior through method signatures without defining the actual implementation 
+- Polymorphism: one code can work with many different implementations seemlessly 
+- Decoupling: separates the code that uses the interface from the code that implements the interface (ie. think of it as a wall blocking the two sides so you have to think less)
+
+```python
+# Defining an interface 
+from abc import ABC, abstractmethod
+
+class PaymentGateway(ABC):
+    @abstractmethod
+    def initiate_payment(self, amount):
+        pass
+
+# Implementing an interface
+class StripePayment(PaymentGateway):
+    def initiate_payment(self, amount):
+        print(f"Processing payment via Stripe: ${amount}")
+
+class RazorpayPayment(PaymentGateway):
+    def initiate_payment(self, amount):
+        print(f"Processing payment via Razorpay: ₹{amount}")
+
+# Using the interface
+class CheckoutService:
+    # Dependency Injection: the interface receives the dependencies from the outside and is able use them because it is typed as an interface
+    def __init__(self, payment_gateway):
+        self.payment_gateway = payment_gateway
+    
+    def set_payment_gateway(self, payment_gateway):
+        self.payment_gateway = payment_gateway
+    
+    def checkout(self, amount):
+        self.payment_gateway.initiate_payment(amount)
+```
