@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: build-an-llm
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: tensorflow>=2.21.0
+Requires-Dist: tiktoken>=0.13.0
+Requires-Dist: torch>=2.12.0
+Requires-Dist: torchvision>=0.27.0
+Requires-Dist: tqdm>=4.68.3

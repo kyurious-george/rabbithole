@@ -5,6 +5,19 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "tensorflow>=2.21.0",
+    "tiktoken>=0.13.0",
     "torch>=2.12.0",
     "torchvision>=0.27.0",
+    "tqdm>=4.68.3",
 ]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["config*", "chapter2*", "chapter3*", "chapter4*", "chapter5*"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.16",
+]
+
